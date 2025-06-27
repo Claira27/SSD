@@ -2,7 +2,7 @@
 1. Keras Layers
 ## Anchor box
 - Phần tinh túy nhất của SSD có lẽ là việc xác định các layers output của anchor box hoạc default bounding box ở các feature map.
-Anchor box layer sẽ nhận đầu vào là một feature map có kích thước( f_w, f_h, n_channels) và các scales, aspect,
+- Anchor box layer sẽ nhận đầu vào là một feature map có kích thước( f_w, f_h, n_channels) và các scales, aspect,
 ratios, trả ra đầu ra là một tensor kích thước(f_w, f_h, n_boxes,4) trong đó chiều cuối cùng đại diện cho 4 offsets của bounding box
 như mô tả trong default box và tỷ lệ cạnh( aspect ratio)
 ## Code biến đổi khá phức tạp:
@@ -15,8 +15,7 @@ như mô tả trong default box và tỷ lệ cạnh( aspect ratio)
 - bước 3: tính tọa độ các điểm (cx,cy,w,h) trên hình ảnh gốc dựa trên phép linear interpolation qua hàm np.linspace():
         Cx = np.linspace(SRART_W, END_W, FEATURE_MAP_W)
         Cy = np.linspace(SRART_H, END_H, FEATURE_MAP_H)
-## kết quả trả về là một tensor có shape là (f_w, f_h, n_boxes, 8), trong đó chiều cuối cùng = 8 tương ứng với 4 offsets của default bounding box 
-và 4 variances đại diện cho các scales của default bounding box.
+## kết quả trả về là một tensor có shape là (f_w, f_h, n_boxes, 8), trong đó chiều cuối cùng = 8 tương ứng với 4 offsets của default bounding box và 4 variances đại diện cho các scales của default bounding box.
 
 2. Các bước thực hiện để khởi tạo cấu trúc của mạng ssd_300 bao gồm:
 
